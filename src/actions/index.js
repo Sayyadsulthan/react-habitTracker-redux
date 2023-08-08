@@ -1,5 +1,4 @@
 // ACTION TYPES
-
 export const ADD_HABIT = "ADD_HABIT";
 export const REMOVE_HABIT = "REMOVE_HABIT";
 export const UPDATE_HABIT = "UPDATE_HABIT";
@@ -24,6 +23,7 @@ export function handelAddHabit(habitName, count) {
   };
 }
 
+// ACTION CREATORS:
 export function addHabit(habit) {
   return {
     type: ADD_HABIT,

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+
 import { removeHabit, updateHabit } from "../actions";
 import { toast } from "react-toastify";
 
@@ -19,23 +19,15 @@ function getWeekDay(index) {
 }
 
 class Dashboard extends React.Component {
+  // used to update the habit status
   handleUpdate = (e, index, habit) => {
-    console.log("handleUpdate", this.props);
     const status = e.target.value;
-    console.log("handleUpdate", e.target.value);
-    console.log("handleUpdate index", index);
-    console.log("handleUpdate habit", habit);
+    // used dispatch from state
     this.props.dispatch(updateHabit(habit, index, status));
     toast.success("habit updated successfully...");
-    // this.props.dispatch(addHabit(habit));
-    // this.props.dispatch(handelAddHabit(habit.name))
-    // this.props.dispatch(removeHabit(habit));
-    // const { habits } = this.props;
-    // this.props.dispatch(addHabit(habits));
   };
 
   handleRemoveHabit = (habit) => {
-    console.log("handle remove habit", habit);
     this.props.dispatch(removeHabit(habit));
     toast.success("habit remover successfully..");
   };
@@ -48,9 +40,9 @@ class Dashboard extends React.Component {
 
           <div className="dashboard-container">
             {/* map method of habits > habit */}
-            {
-                habits.length<1 && <h1>Oops !! you need to create habit First</h1>
-            }
+            {habits.length < 1 && (
+              <h1>Oops !! you need to create habit First</h1>
+            )}
 
             {habits.map((habit) => (
               <div className="dashboard-body">
@@ -87,12 +79,14 @@ class Dashboard extends React.Component {
   }
 }
 
+// callback method
 function mapStateToProps(state) {
   return {
     habits: state.habits,
   };
 }
 
+// connect method from react-redux
 const connectedAppComponent = connect(mapStateToProps)(Dashboard);
 
 export default connectedAppComponent;
