@@ -75,7 +75,9 @@ class Home extends React.Component {
     return (
       <>
         <div className="home-wrapper">
+
           <div className="create-habit-container">
+          
             <input
               type="text"
               value={this.state.value}
@@ -83,6 +85,7 @@ class Home extends React.Component {
             />
             <button onClick={this.handelAddHabitToData}>addHabit</button>
           </div>
+          {habits.length < 1 && <h1>Oops !! you need to create habit First</h1>}
           {habits.map((habit) => {
             count++;
             const currentDayStatus =

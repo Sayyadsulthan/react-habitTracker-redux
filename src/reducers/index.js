@@ -3,7 +3,7 @@ import { ADD_HABIT, REMOVE_HABIT, UPDATE_HABIT } from "../actions";
 const initialState = {
   habits: [
     {
-      name: "dsa",
+      name: "javascript",
       id: 1,
       weeklyReport: [
         { status: "notDone" },
